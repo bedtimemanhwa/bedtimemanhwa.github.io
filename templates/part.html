@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "macros.html" import video, credits %}
+{% block jsonld %}
+{% if p.youtube_id and p.published %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "VideoObject",
+  "name": p.title, "description": p.summary, "uploadDate": p.published,
+  "thumbnailUrl": "https://i.ytimg.com/vi/" ~ p.youtube_id ~ "/maxresdefault.jpg",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/" ~ p.youtube_id,
+  "contentUrl": "https://www.youtube.com/watch?v=" ~ p.youtube_id
+} | tojson }}</script>
+{% endif %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": site.title, "item": absurl('')},
+    {"@type": "ListItem", "position": 2, "name": s.title, "item": absurl(s.slug + '/')},
+    {"@type": "ListItem", "position": 3, "name": "Part " ~ p.n, "item": canonical}]
+} | tojson }}</script>
+{% endblock %}
+{% block main %}
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a> › <a href="{{ link(s.slug + '/') }}">{{ s.title }}</a> › Part {{ p.n }}</nav>
+<h1>{{ p.title }}</h1>
+{% if p.youtube_id %}
+<div class="player">{{ video(p, s, eager=true) }}</div>
+{% else %}
+<div class="player"><div class="soon big"><span>Coming soon</span><small>Subscribe to hear when it's out.</small></div></div>
+{% endif %}
+<p class="lede">{{ p.summary }}</p>
+<p class="actions">
+  {% if p.youtube_id %}<a class="btn" href="https://www.youtube.com/watch?v={{ p.youtube_id }}" rel="noopener">Watch on YouTube</a>{% endif %}
+  <a class="btn ghost" href="{{ site.channel_url }}?sub_confirmation=1" rel="noopener">Subscribe</a>
+</p>
+{% if p.chapters %}
+<h2>Chapters</h2>
+<ol class="chapters">{% for t, name in p.chapters %}<li><span class="meta">{{ t }}</span> {{ name }}</li>{% endfor %}</ol>
+{% endif %}
+{% if article %}
+<p>Read the companion article: <a href="{{ link(article.path) }}">{{ article.title }}</a></p>
+{% endif %}
+<nav class="prevnext" aria-label="Parts">
+  {% for q in s.parts %}{% if q.n == p.n - 1 %}<a href="{{ link(q.path) }}">‹ Part {{ q.n }}</a>{% endif %}{% endfor %}
+  <a href="{{ link(s.slug + '/') }}">All parts</a>
+  {% for q in s.parts %}{% if q.n == p.n + 1 %}<a href="{{ link(q.path) }}">Part {{ q.n }} ›</a>{% endif %}{% endfor %}
+</nav>
+{{ credits(s) }}
+{% endblock %}

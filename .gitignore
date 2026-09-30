@@ -1,0 +1,5 @@
+# Drafts may name private uploads: they never go to the public repo.
+content/drafts/
+preview_drafts/
+__pycache__/
+preview_shots/

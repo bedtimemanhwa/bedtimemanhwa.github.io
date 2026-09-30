@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% from "macros.html" import video, part_card %}
+{% block jsonld %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "WebSite", "name": site.title, "url": canonical, "description": site.description},
+    {"@type": "Organization", "name": site.title, "url": canonical, "logo": absurl('static/img/apple-touch-icon.png'),
+     "sameAs": [site.channel_url]}
+  ]
+} | tojson }}</script>
+{% endblock %}
+{% block main %}
+<section class="hero">
+  <h1>{{ site.tagline }}</h1>
+  <p>Long, spoken recaps of action manhwa with witty narration, told in order, with companion articles. Every series is credited and
+  linked to its official release.</p>
+  <p><a class="btn big" href="{{ site.channel_url }}?sub_confirmation=1" rel="noopener">Subscribe on YouTube</a></p>
+</section>
+
+<section>
+  <h2>Latest recaps</h2>
+  {% if latest %}
+  <div class="grid">
+    {% for s, p in latest %}{{ part_card(p, s, link) }}{% endfor %}
+  </div>
+  {% else %}<p>The first recap is on its way.</p>{% endif %}
+</section>
+
+<section>
+  <h2>Series</h2>
+  <div class="grid series-grid">
+    {% for s in series_list %}
+    <a class="card series-card" href="{{ link(s.slug + '/') }}">
+      <div class="card-body">
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.tagline }}</p>
+        {% set n_pub = s.parts | selectattr("status", "equalto", "public") | list | length %}
+        <p class="meta">{{ s.parts | length }} part{{ 's' if s.parts | length != 1 }}{% if n_pub %} · {{ n_pub }} out now{% else %} · coming soon{% endif %}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% if articles %}
+<section>
+  <h2>Articles</h2>
+  <ul class="list">
+    {% for a in articles %}
+    <li><a href="{{ link(a.path) }}">{{ a.title }}</a>{% if a.draft %} <span class="tag">draft</span>{% endif %}
+      <span class="meta">{{ a.date or "" }}</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

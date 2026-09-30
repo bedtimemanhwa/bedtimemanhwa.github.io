@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ajalwin123-crypto.github.io/bedtime-manhwa-site/sitemap.xml

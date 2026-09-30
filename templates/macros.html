@@ -1,0 +1,29 @@
+{% macro video(p, s, eager=false) %}
+<a class="yt" href="https://www.youtube.com/watch?v={{ p.youtube_id }}" data-yt="{{ p.youtube_id }}" rel="noopener"
+   aria-label="Play {{ p.title }} on YouTube">
+  <img src="https://i.ytimg.com/vi/{{ p.youtube_id }}/hqdefault.jpg" alt="{{ p.title }}" width="480" height="360"
+       {% if not eager %}loading="lazy"{% endif %} decoding="async">
+  <span class="play" aria-hidden="true"></span>
+  {% if p.duration %}<span class="dur">{{ p.duration }}</span>{% endif %}
+</a>
+{% endmacro %}
+
+{% macro credits(s) %}
+<aside class="credits">
+  <h2>Support the original</h2>
+  <p>{{ s.credits }}</p>
+  <p>Read <em>{{ s.title }}</em> officially:
+    {% for o in s.official %}<a href="{{ o.url }}" rel="noopener">{{ o.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+</aside>
+{% endmacro %}
+
+{% macro part_card(p, s, link) %}
+<article class="card part {{ p.status }}">
+  {% if p.youtube_id %}{{ video(p, s) }}{% else %}<div class="soon"><span>Coming soon</span></div>{% endif %}
+  <div class="card-body">
+    <h3><a href="{{ link(p.path) }}">{{ s.title }}: Part {{ p.n }}</a></h3>
+    <p class="meta">Episodes {{ p.episodes }}{% if p.duration %} · {{ p.duration }}{% endif %}</p>
+    <p>{{ p.summary }}</p>
+  </div>
+</article>
+{% endmacro %}

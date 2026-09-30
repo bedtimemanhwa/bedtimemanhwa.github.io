@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main %}
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a> › Articles</nav>
+<h1>Articles</h1>
+<p class="lede">Spoiler-light companions to our recaps: never past the video's last episode, always credited.</p>
+{% if articles %}
+<div class="grid">
+  {% for a in articles %}
+  <a class="card article-card" href="{{ link(a.path) }}">
+    {% if a.image %}<img src="{{ link(a.path + a.image) }}" alt="" loading="lazy" decoding="async">{% endif %}
+    <div class="card-body">
+      <h3>{{ a.title }}{% if a.draft %} <span class="tag">draft</span>{% endif %}</h3>
+      <p>{{ a.description }}</p>
+      {% if a.date %}<p class="meta">{{ a.date }}</p>{% endif %}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}<p>The first article is on its way.</p>{% endif %}
+{% endblock %}

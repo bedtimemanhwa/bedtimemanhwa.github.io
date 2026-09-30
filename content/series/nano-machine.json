@@ -1,0 +1,29 @@
+{
+  "title": "Nano Machine",
+  "order": 1,
+  "tagline": "The Demonic Cult's unwanted son, and the machine from the future living in his blood.",
+  "description": "Cheon Yeo-woon is the Demonic Cult's seventh heir and its least wanted one: no martial arts, no allies, and assassins on his heels. Then a descendant from the future injects him with Nano, billions of tiny machines that rebuild his body, copy any technique he sees and never stop talking. Our recap follows his climb through the Cult's academy and the war between the heirs.",
+  "credits": "Art: Geumganbulgoe (금강불괴) · Adaptation: Hyeonjeolmu (현절무) · Original novel: Hanjungwolya (한중월야)",
+  "official": [
+    {"name": "WEBTOON (English)", "url": "https://www.webtoons.com/en/action/nano-machine/list?title_no=4344"},
+    {"name": "Naver Webtoon (Korean)", "url": "https://comic.naver.com/webtoon/list?titleId=747271"}
+  ],
+  "keywords": ["Nano Machine recap", "Nano Machine manhwa", "Cheon Yeo-woon", "murim manhwa"],
+  "parts": [
+    {
+      "n": 1,
+      "episodes": "1–60",
+      "status": "public",
+      "youtube_id": "l8Xh04jlsMg",
+      "published": "2026-09-28T06:16:00Z",
+      "duration": "1:09:01",
+      "summary": "The Demonic Cult's seventh son is cornered in the mountains with a sword through his gut, until a boy from the future injects him with Nano. Episodes 1 to 60: the academy, the library of a hundred and fifty-six manuals, the founder's stele and the first moves against the heirs who want him dead."
+    },
+    {
+      "n": 2,
+      "episodes": "61–120",
+      "status": "upcoming",
+      "summary": "Fifty-three followers, a black sword made from a monster's horn and five months to beat every other heir to the throne. Episodes 61 to 120."
+    }
+  ]
+}

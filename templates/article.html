@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "macros.html" import credits %}
+{% block jsonld %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": a.title, "description": description, "mainEntityOfPage": canonical,
+  "image": a.image_url, "datePublished": a.date | default(none),
+  "author": {"@type": "Organization", "name": site.title},
+  "publisher": {"@type": "Organization", "name": site.title}
+} | tojson }}</script>
+{% endblock %}
+{% block main %}
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a> › <a href="{{ link('articles/') }}">Articles</a></nav>
+<article class="prose">
+  <h1>{{ a.title }}</h1>
+  {% if a.draft %}<p class="tag">draft: not on the public site</p>{% endif %}
+  {% if a.date %}<p class="meta">{{ a.date }} · {{ site.title }}</p>{% endif %}
+  {{ a.html | replace('src="panel', 'src="' ~ link(a.path) ~ 'panel') | safe }}
+</article>
+{% if s and p %}
+<p class="actions">
+  <a class="btn" href="{{ link(p.path) }}">{{ s.title }} Part {{ p.n }}{% if not p.youtube_id %} (coming soon){% endif %}</a>
+  <a class="btn ghost" href="{{ link(s.slug + '/') }}">All {{ s.title }} parts</a>
+</p>
+{% endif %}
+{% if s %}{{ credits(s) }}{% endif %}
+{% endblock %}

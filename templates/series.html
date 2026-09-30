@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "macros.html" import part_card, credits %}
+{% block jsonld %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage", "name": title, "url": canonical, "description": description,
+  "about": {"@type": "CreativeWorkSeries", "name": s.title},
+  "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": site.title, "item": absurl('')},
+    {"@type": "ListItem", "position": 2, "name": s.title, "item": canonical}]}
+} | tojson }}</script>
+{% endblock %}
+{% block main %}
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a> › {{ s.title }}</nav>
+<h1>{{ s.title }} recap</h1>
+<p class="lede">{{ s.tagline }}</p>
+<p>{{ s.description }}</p>
+
+<h2>All parts, in order</h2>
+<div class="grid">
+  {% for p in s.parts %}{{ part_card(p, s, link) }}{% endfor %}
+</div>
+
+{% if articles %}
+<h2>Articles</h2>
+<ul class="list">
+  {% for a in articles %}<li><a href="{{ link(a.path) }}">{{ a.title }}</a>{% if a.draft %} <span class="tag">draft</span>{% endif %}</li>{% endfor %}
+</ul>
+{% endif %}
+
+{{ credits(s) }}
+{% endblock %}

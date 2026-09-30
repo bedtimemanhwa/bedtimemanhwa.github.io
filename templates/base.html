@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ canonical }}">
+<meta name="theme-color" content="#140f24">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ og_image }}">
+{% if drafts or noindex %}<meta name="robots" content="noindex">{% endif %}
+<link rel="icon" href="{{ link('static/img/favicon-32.png') }}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{{ link('static/img/apple-touch-icon.png') }}">
+<link rel="stylesheet" href="{{ link('static/site.css') }}">
+{% block jsonld %}{% endblock %}
+</head>
+<body>
+{% if drafts %}<div class="draftbar">DRAFTS PREVIEW: not the public site, never pushed</div>{% endif %}
+<header class="top">
+  <a class="brand" href="{{ link('') }}" aria-label="{{ site.title }} home">
+    <img src="{{ link('static/img/wordmark.png') }}" alt="{{ site.title }}" width="336" height="64">
+  </a>
+  <nav class="nav" aria-label="Main">
+    <details class="menu">
+      <summary>Series</summary>
+      <ul>
+        {% for s in series_list %}<li><a href="{{ link(s.slug + '/') }}">{{ s.title }}</a></li>{% endfor %}
+      </ul>
+    </details>
+    <a href="{{ link('articles/') }}">Articles</a>
+    <a href="{{ link('about/') }}">About</a>
+    <a class="btn sub" href="{{ site.channel_url }}?sub_confirmation=1" rel="noopener">Subscribe</a>
+  </nav>
+</header>
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer class="foot">
+  <p><strong>{{ site.title }}</strong> makes fan recaps with original narration. All artwork belongs to its creators; every page
+  credits them and links to the official release. Please read the series there.</p>
+  <p class="foot-links">
+    {% for s in series_list %}<a href="{{ link(s.slug + '/') }}">{{ s.title }}</a> · {% endfor %}
+    <a href="{{ link('articles/') }}">Articles</a> · <a href="{{ link('about/') }}">About</a> ·
+    <a href="{{ site.channel_url }}" rel="noopener">YouTube</a>
+  </p>
+  <p class="small">© {{ year }} {{ site.title }}. Recaps are commentary for review and entertainment.</p>
+</footer>
+<script src="{{ link('static/site.js') }}" defer></script>
+</body>
+</html>

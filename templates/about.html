@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block main %}
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a> › About</nav>
+<article class="prose">
+  <h1>About {{ site.title }}</h1>
+  <p>{{ site.title }} is a small channel of long, spoken recaps of action manhwa with witty narration: the whole story told in
+  order, part by part. Each recap has original narration, editing and sound; the artwork is
+  the creators', shown with credit.</p>
+  <h2>How we treat the creators</h2>
+  <ul>
+    <li>Every recap, article and page names the artist, writer and original author, as the official release credits them.</li>
+    <li>Every series page links to the official release. If you enjoy a story, please read it there.</li>
+    <li>Articles stay spoiler-light and never run past the last episode the matching video covers.</li>
+  </ul>
+  <h2>Where to find us</h2>
+  <p>The recaps live on YouTube: <a href="{{ site.channel_url }}" rel="noopener">{{ site.channel_url | replace('https://www.', '') }}</a>.
+  The quickest way to reach us is a comment under a video.</p>
+</article>
+{% endblock %}
