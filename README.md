@@ -24,6 +24,8 @@ Python 3 with Jinja2 (already installed). No other packages; the markdown conver
   The first three came from Yohan's drafts in `shared/content_manager/drafts/`; from now on this folder can be the
   master copy, and our site is the canonical home of each article.
 - `content/drafts/`: drafts. Git-ignored, because they may name private uploads.
+- `root/`: files copied byte for byte to the site root on every build. It holds the Google Search Console
+  verification file (`google3c44219caaa6c826.html`); keep it for good, or the site drops out of Search Console.
 
 ## Built-in rules
 

@@ -267,6 +267,12 @@ class Site:
             + "</urlset>\n", encoding="utf-8")
         (self.out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {self.abs('sitemap.xml')}\n", encoding="utf-8")
         (self.out / ".nojekyll").write_text("", encoding="utf-8")   # Pages serves the files as they are
+        # root/: files that must sit at the site root, byte for byte, on every build (the Google Search Console
+        # verification file must stay there for good, or the site drops out of Search Console)
+        for f in sorted((HERE / "root").glob("*")) if (HERE / "root").is_dir() else []:
+            if f.is_file():
+                shutil.copy2(f, self.out / f.name)
+                self.written.append(f.name)
         self.written += ["sitemap.xml", "robots.txt", ".nojekyll"]
         self.check_ids()
         stale = sorted(before - set(self.written))
