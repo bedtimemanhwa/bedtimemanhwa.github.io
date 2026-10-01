@@ -5,16 +5,28 @@
   "description": "The Empire takes children and turns them into weapons. Number thirty-two is Luca, a lower-city orphan in the Imperial Guard, where broken parts get swapped for titanium and loyalty is the only thing that can't be replaced. Set in the RF Online universe, on the planet Novus.",
   "credits": "Art: D-Park · Story: Jinuri (지누리) · Adaptation: Ho Bak-sae (호박새) · Original novel: Baeksu Noble (백수귀족) · Produced by REDICE Studio",
   "official": [
-    {"name": "WEBTOON (English)", "url": "https://www.webtoons.com/en/action/bad-born-blood/list?title_no=7208"},
-    {"name": "Naver Webtoon (Korean)", "url": "https://comic.naver.com/webtoon/list?titleId=833388"}
+    {
+      "name": "WEBTOON (English)",
+      "url": "https://www.webtoons.com/en/action/bad-born-blood/list?title_no=7208"
+    },
+    {
+      "name": "Naver Webtoon (Korean)",
+      "url": "https://comic.naver.com/webtoon/list?titleId=833388"
+    }
   ],
-  "keywords": ["Bad Born Blood recap", "Bad Born Blood manhwa", "Luca", "sci-fi manhwa"],
+  "keywords": [
+    "Bad Born Blood recap",
+    "Bad Born Blood manhwa",
+    "Luca",
+    "sci-fi manhwa"
+  ],
   "parts": [
     {
       "n": 1,
       "episodes": "1–48",
-      "status": "upcoming",
-      "summary": "Luca trains alongside a noble heir who wants to be his friend, learns from a teacher nobody can read, and finds that the people above him are painting a bigger picture. Episodes 1 to 48."
+      "status": "public",
+      "summary": "Luca trains alongside a noble heir who wants to be his friend, learns from a teacher nobody can read, and finds that the people above him are painting a bigger picture. Episodes 1 to 48.",
+      "youtube_id": "3tKzjxZP9rM"
     }
   ]
 }
