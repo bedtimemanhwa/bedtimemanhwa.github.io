@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block main %}
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a> › Terms</nav>
+<article class="prose">
+  <h1>Terms of service</h1>
+  <p class="small">Last updated: {{ site.legal_updated }}</p>
+
+  <h2>This website</h2>
+  <p>{{ site.title }} publishes fan recaps and companion articles about manhwa, as commentary for review and entertainment.
+  All artwork belongs to its creators. Every page credits them and links to the official release; please read the
+  series there. You may share links to our pages freely. Please don't copy our articles or recaps wholesale.</p>
+  <p>The site is provided as it is, without warranties. Links to other sites, including the official releases and
+  YouTube, are governed by those sites' own terms.</p>
+
+  <h2>Forge</h2>
+  <p>Forge is an internal tool. Only the {{ site.title }} team uses it, to upload and manage videos on the {{ site.title }}
+  YouTube channel through the YouTube Data API. It is not offered to the public. By using Forge, the team agrees to the
+  <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a> and the
+  <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>. How Forge handles data is
+  described in our <a href="{{ link('privacy/') }}">privacy policy</a>.</p>
+
+  <h2>Contact</h2>
+  <p>{% if site.contact_email %}Questions: <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.
+  {% else %}Questions: reach us through our YouTube channel,
+  <a href="{{ site.channel_url }}" rel="noopener">{{ site.channel_url | replace('https://www.', '') }}</a>.{% endif %}</p>
+</article>
+{% endblock %}

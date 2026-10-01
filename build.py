@@ -8,7 +8,7 @@ Content:
   content/series/<slug>.json        one per series: credits, official links, parts (status public | upcoming)
   content/articles/<slug>/index.md  published articles: front matter + markdown, images beside it
   content/drafts/<slug>/index.md    drafts (git-ignored; they may mention private uploads)
-Pages: / · /<series>/ · /<series>/part-N/ · /articles/ · /articles/<slug>/ · /about/ · 404 · sitemap.xml · robots.txt
+Pages: / · /<series>/ · /<series>/part-N/ · /articles/ · /articles/<slug>/ · /about/ · /privacy/ · /terms/ · 404 · sitemap.xml · robots.txt
 
 Rules built in:
   - A part only gets a video (embed, thumbnail, id) when its status is "public". Upcoming parts show no id at all.
@@ -259,6 +259,10 @@ class Site:
                         **({"og_image": a["image_url"]} if a["image_url"] else {}))
         self.render("about.html", "about/", title=f"About | {self.cfg['title']}",
                     description=f"Who makes {self.cfg['title']}, how we credit creators, and where to watch.")
+        self.render("privacy.html", "privacy/", title=f"Privacy policy | {self.cfg['title']}",
+                    description=f"How the {self.cfg['title']} website and our YouTube tool Forge handle data.")
+        self.render("terms.html", "terms/", title=f"Terms of service | {self.cfg['title']}",
+                    description=f"Terms for the {self.cfg['title']} website and our internal YouTube tool Forge.")
         self.render("404.html", "404.html", title=f"Page not found | {self.cfg['title']}", description="This page doesn't exist.",
                     canonical=self.abs(""))
         (self.out / "sitemap.xml").write_text(

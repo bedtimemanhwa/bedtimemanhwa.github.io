@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block main %}
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ link('') }}">Home</a> › Privacy</nav>
+<article class="prose">
+  <h1>Privacy policy</h1>
+  <p class="small">Last updated: {{ site.legal_updated }}</p>
+  <p>This page covers this website and <strong>Forge</strong>, the in-house tool {{ site.title }} uses to upload and
+  manage videos on its own YouTube channel.</p>
+
+  <h2>This website</h2>
+  <p>This website has no accounts, forms, comments, advertising or analytics. It doesn't set cookies or collect personal
+  information. Embedded YouTube videos are served by YouTube under
+  <a href="https://policies.google.com/privacy" rel="noopener">Google's privacy policy</a>.</p>
+
+  <h2>Forge and the YouTube API</h2>
+  <p>Forge is used only by the {{ site.title }} team, on the team's own computer, to manage the {{ site.title }} YouTube
+  channel. When the channel owner signs in with Google, Forge asks for access to YouTube through the
+  <a href="https://developers.google.com/youtube/v3" rel="noopener">YouTube Data API</a> so it can:</p>
+  <ul>
+    <li>upload our own videos and set their titles, descriptions, thumbnails, captions, playlists and publishing schedule;</li>
+    <li>read the channel's own videos and basic channel details, such as its name and subscriber count.</li>
+  </ul>
+  <p>What Forge does <strong>not</strong> do:</p>
+  <ul>
+    <li>It doesn't access anyone else's channel, viewers' personal data, email, contacts or files.</li>
+    <li>It doesn't sell, share or transfer any data to anyone. Nothing from YouTube is used for advertising or for
+      training any model.</li>
+    <li>It doesn't send data anywhere except to YouTube itself.</li>
+  </ul>
+  <p>Forge keeps two things, both on the team's own computer only: its sign-in token, and a log of its own uploads
+  (video titles, video IDs and dates). It uses them only for the actions listed above.
+  Forge's use of information received from Google APIs follows the
+  <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data
+  Policy</a>, including its Limited Use requirements. Its use of YouTube follows the
+  <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a>.</p>
+
+  <h2>Removing access</h2>
+  <p>The account owner can remove Forge's access at any time on the Google Account page
+  <a href="https://myaccount.google.com/permissions" rel="noopener">Third-party apps with account access</a>. The token
+  Forge holds stops working immediately. Forge's Disconnect button deletes that token from the computer, and the upload
+  log can be deleted on request.</p>
+
+  <h2>Contact</h2>
+  <p>{% if site.contact_email %}Questions about this policy: <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.
+  {% else %}Questions about this policy: reach us through our YouTube channel,
+  <a href="{{ site.channel_url }}" rel="noopener">{{ site.channel_url | replace('https://www.', '') }}</a>.{% endif %}</p>
+</article>
+{% endblock %}

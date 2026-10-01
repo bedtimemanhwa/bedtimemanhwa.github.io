@@ -52,6 +52,7 @@
   <p class="foot-links">
     {% for s in series_list %}<a href="{{ link(s.slug + '/') }}">{{ s.title }}</a> · {% endfor %}
     <a href="{{ link('articles/') }}">Articles</a> · <a href="{{ link('about/') }}">About</a> ·
+    <a href="{{ link('privacy/') }}">Privacy</a> · <a href="{{ link('terms/') }}">Terms</a> ·
     <a href="{{ site.channel_url }}" rel="noopener">YouTube</a>
   </p>
   <p class="small">© {{ year }} {{ site.title }}. Recaps are commentary for review and entertainment.</p>
