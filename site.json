@@ -5,5 +5,12 @@
   "description": "Long, spoken recaps of action manhwa with witty narration, told in order, with companion articles. Nano Machine, Bad Born Blood, The Stellar Swordmaster and more, always credited and linked to the official release.",
   "base_url": "https://ajalwin123-crypto.github.io/bedtime-manhwa-site",
   "channel_url": "https://www.youtube.com/@bedtimemanhwa",
-  "lang": "en"
+  "lang": "en",
+  "verify_meta": [
+    {
+      "name": "p:domain_verify",
+      "content": "5d5566d2cbbf8060e3f5b7b06bee3c8d",
+      "_for": "Pinterest website claim (Yohan, 1 Oct 2026)"
+    }
+  ]
 }

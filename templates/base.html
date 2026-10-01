@@ -18,6 +18,8 @@
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ og_image }}">
 {% if drafts or noindex %}<meta name="robots" content="noindex">{% endif %}
+{% for m in site.get("verify_meta", []) %}<meta name="{{ m.name }}" content="{{ m.content }}">
+{% endfor %}
 <link rel="icon" href="{{ link('static/img/favicon-32.png') }}" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{{ link('static/img/apple-touch-icon.png') }}">
 <link rel="stylesheet" href="{{ link('static/site.css') }}">
