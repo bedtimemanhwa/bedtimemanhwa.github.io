@@ -3,7 +3,7 @@ title: Nano Machine, Episodes 1–60: The Demonic Cult's Unwanted Son Gets an Up
 description: A spoiler-light companion to Part 1 of our recap, and a look at why this opening stretch is so easy to binge.
 series: nano-machine
 part: 1
-status: published
+status: unpublished
 date: 2026-09-30
 image: panel1_ep1_syringe.jpg
 source: shared/content_manager/drafts/nano_machine_part1/substack_article.md (Content Manager Yohan)
