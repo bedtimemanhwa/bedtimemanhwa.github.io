@@ -2,7 +2,7 @@
 {% block main %}
 <section class="hero">
   <h1>This page drifted off to sleep</h1>
-  <p>It doesn't exist, or it moved. Try the <a href="{{ link('') }}">home page</a> or pick a series:</p>
-  <ul class="list">{% for s in series_list %}<li><a href="{{ link(s.slug + '/') }}">{{ s.title }}</a></li>{% endfor %}</ul>
+  <p>It doesn't exist, or it moved. Try the <a href="{{ link('') }}">home page</a>{% if series_list %} or pick a series:{% else %}.{% endif %}</p>
+  {% if series_list %}<ul class="list">{% for s in series_list %}<li><a href="{{ link(s.slug + '/') }}">{{ s.title }}</a></li>{% endfor %}</ul>{% endif %}
 </section>
 {% endblock %}

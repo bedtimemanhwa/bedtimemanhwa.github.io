@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="hero">
+  <p>{{ site.title }} is on YouTube: <a href="{{ site.channel_url }}" rel="noopener">{{ site.channel_url | replace('https://www.', '') }}</a></p>
+</section>
+{% endblock %}

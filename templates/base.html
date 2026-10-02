@@ -32,6 +32,7 @@
     <img src="{{ link('static/img/wordmark.png') }}" alt="{{ site.title }}" width="336" height="64">
   </a>
   <nav class="nav" aria-label="Main">
+    {% if site.minimal %}<a class="btn sub" href="{{ site.channel_url }}" rel="noopener">YouTube</a>{% else %}
     <details class="menu">
       <summary>Series</summary>
       <ul>
@@ -40,13 +41,16 @@
     </details>
     <a href="{{ link('articles/') }}">Articles</a>
     <a href="{{ link('about/') }}">About</a>
-    <a class="btn sub" href="{{ site.channel_url }}?sub_confirmation=1" rel="noopener">Subscribe</a>
+    <a class="btn sub" href="{{ site.channel_url }}?sub_confirmation=1" rel="noopener">Subscribe</a>{% endif %}
   </nav>
 </header>
 <main id="main">
 {% block main %}{% endblock %}
 </main>
 <footer class="foot">
+  {% if site.minimal %}<p class="foot-links"><a href="{{ link('privacy/') }}">Privacy</a> · <a href="{{ link('terms/') }}">Terms</a> ·
+    <a href="{{ site.channel_url }}" rel="noopener">YouTube</a></p>
+  <p class="small">© {{ year }} {{ site.title }}.</p>{% else %}
   <p><strong>{{ site.title }}</strong> makes fan recaps with original narration. All artwork belongs to its creators; every page
   credits them and links to the official release. Please read the series there.</p>
   <p class="foot-links">
@@ -55,7 +59,7 @@
     <a href="{{ link('privacy/') }}">Privacy</a> · <a href="{{ link('terms/') }}">Terms</a> ·
     <a href="{{ site.channel_url }}" rel="noopener">YouTube</a>
   </p>
-  <p class="small">© {{ year }} {{ site.title }}. Recaps are commentary for review and entertainment.</p>
+  <p class="small">© {{ year }} {{ site.title }}. Recaps are commentary for review and entertainment.</p>{% endif %}
 </footer>
 <script src="{{ link('static/site.js') }}" defer></script>
 </body>

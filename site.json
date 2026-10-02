@@ -2,7 +2,7 @@
   "_comment": "Site settings. base_url is where the site will live; the path part is added to every link. Change it (and nothing else) for a custom domain later.",
   "title": "Bedtime Manhwa",
   "tagline": "Manhwa recaps to fall asleep to",
-  "description": "Long, spoken recaps of action manhwa with witty narration, told in order: Bad Born Blood, The Stellar Swordmaster and more, always credited and linked to the official release.",
+  "description": "Bedtime Manhwa makes manhwa recap videos on YouTube.",
   "base_url": "https://bedtimemanhwa.github.io",
   "channel_url": "https://www.youtube.com/@bedtimemanhwa",
   "lang": "en",
@@ -14,5 +14,6 @@
     }
   ],
   "contact_email": "",
-  "legal_updated": "1 October 2026"
+  "legal_updated": "2 October 2026",
+  "minimal": true
 }

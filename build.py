@@ -222,6 +222,18 @@ class Site:
                 d.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(f, d)
                 self.written.append(str(d.relative_to(self.out)).replace("\\", "/"))
+        if self.cfg.get("minimal"):
+            # CEO, 2 Oct: no articles, no series pages. Only a one-line home page and the pages the Google OAuth app's
+            # branding lists (privacy, terms) on the authorised domain; breaking those risks the YouTube upload app.
+            self.render("home_min.html", "", title=self.cfg["title"], description=f"{self.cfg['title']} on YouTube.",
+                        home=True, og_image=self.abs("static/img/og-default.png"))
+            self.render("privacy.html", "privacy/", title=f"Privacy policy | {self.cfg['title']}",
+                        description=f"How the {self.cfg['title']} website and our YouTube tool Forge handle data.")
+            self.render("terms.html", "terms/", title=f"Terms of service | {self.cfg['title']}",
+                        description=f"Terms for the {self.cfg['title']} website and our internal YouTube tool Forge.")
+            self.render("404.html", "404.html", title=f"Page not found | {self.cfg['title']}", description="This page doesn't exist.",
+                        canonical=self.abs(""))
+            return self.finish_build(before)
         latest = [(s, p) for s in self.series for p in reversed(s["parts"]) if p["status"] == "public"]
         self.render("home.html", "", title=f"{self.cfg['title']}: {self.cfg['tagline']}", description=self.cfg["description"],
                     latest=latest[:6], articles=self.articles[:4], home=True,
@@ -265,6 +277,9 @@ class Site:
                     description=f"Terms for the {self.cfg['title']} website and our internal YouTube tool Forge.")
         self.render("404.html", "404.html", title=f"Page not found | {self.cfg['title']}", description="This page doesn't exist.",
                     canonical=self.abs(""))
+        return self.finish_build(before)
+
+    def finish_build(self, before):
         (self.out / "sitemap.xml").write_text(
             '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "".join(f"  <url><loc>{self.abs(p)}</loc><lastmod>{m}</lastmod></url>\n" for p, m in self.pages)
